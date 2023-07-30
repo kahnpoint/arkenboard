@@ -49,6 +49,13 @@ class iKey {
       if (_ctrlDown) {
         result := "^" . result
       }
+      if (GetKeyState("Alt")){
+        result := "!" . result
+      }
+      if (GetKeyState("LWin") or GetKeyState("RWin")){
+        result := "#" . result
+      }
+      
     }
 
     ; some keys require pauses between commands
@@ -143,7 +150,7 @@ iKeyy := new iKey("y", "{CtrlDown}``{CtrlUp}", "{Ctrl Down}{b}{CtrlUp}", "^+`;")
 iKeyu := new iKey("u", "<", ">", "<>{Left}")
 iKeyi := new iKey("i", "[", "]", "[]{Left}")
 iKeyo := new iKey("o", "{", "}", "{{}{}}{Left}")
-iKeyp := new iKey("p", "(", ")", "()")
+iKeyp := new iKey("p", "(", ")", "(){Left}")
 iKeya := new iKey("a", "/", "@", "/*{Space}{Space}*/{Left 3}")
 iKeys := new iKey(" ", "{Tab}", "{Backspace}", "{Alt Down}{Tab}{Alt Up}")
 iKeyf := new iKey("f", "{Shift Down}", "{Delete}", "{Shift Down}")
@@ -158,7 +165,7 @@ iKeyc := new iKey("c", ":", "{Ctrl Down}c{Ctrl Up}", "::")
 iKeyv := new iKey("v", "``", "{Ctrl Down}v{Ctrl Up}", "````{Left}")
 iKeyb := new iKey("b", "|", "{Ctrl Down}y{Ctrl Up}", "\")
 iKeyn := new iKey("n", "&", "+", "{^}")
-iKeym := new iKey("m", "!", "*", "<{!}--{Space}{Space}-->{Left}{Left}{Left}{Left}")
+iKeym := new iKey("m", "`!", "*", "<{!}--{Space}{Space}-->{Left}{Left}{Left}{Left}")
 iKeyComma := new iKey("d", ",", "%", "")
 iKeyPeriod := new iKey("k", ".", "=", ":=")
 iKeySlash := new iKey("j", "?", "$", "${{}{}}{Left}")
