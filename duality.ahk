@@ -141,11 +141,11 @@ iShiftKey := new iShiftKey()
 iCtrlKey := new iCtrlKey()
 
 ; create the key objects
-iKeyq := new iKey("q", 5, 0, "{Ctrl Down}{Shift Down}p{Shift Up}{Ctrl Up}")
-iKeyw := new iKey("w", 6, 1, "#.")
-iKeye := new iKey("e", 7, 2, "{Esc}")
-iKeyr := new iKey("r", 8, 3, "{F2}")
-iKeyt := new iKey("t", 9, 4, ["{Ctrl Down}l{Ctrl Up}cmd{Enter}", "sleep, 1200", "code . {Enter}"])
+iKeyq := new iKey("q", 0, 5, "{Ctrl Down}{Shift Down}p{Shift Up}{Ctrl Up}")
+iKeyw := new iKey("w", 1, 6, "#.")
+iKeye := new iKey("e", 2, 7,  "{Esc}")
+iKeyr := new iKey("r", 3, 8, "{F2}")
+iKeyt := new iKey("t", 4, 9, ["{Ctrl Down}l{Ctrl Up}cmd{Enter}", "sleep, 1200", "code . {Enter}"])
 iKeyy := new iKey("y", "{CtrlDown}``{CtrlUp}", "{Ctrl Down}{b}{CtrlUp}", "^+`;")
 iKeyu := new iKey("u", "<", ">", "<>{Left}")
 iKeyi := new iKey("i", "[", "]", "[]{Left}")
@@ -216,3 +216,6 @@ iKeySlash := new iKey("j", "?", "$", "${{}{}}{Left}")
 *j::iKeyj.press()
 *l::iKeyl.press()
 *`;::lKeySemicolon.press()
+
+; disable the spacebar for training purposes
+*Space::return
