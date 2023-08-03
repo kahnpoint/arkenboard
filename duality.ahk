@@ -40,18 +40,20 @@ class iKey {
       result := this.sub
     } else If (_superDown) {
       result := this.super
-    } 
+    } else {
+      result := this.default
+    }
     
-      if (GetKeyState("Alt")){
+      if (GetKeyState("RAlt") or GetKeyState("LAlt")){
         result := "!" . result
       }
       if (GetKeyState("LWin") or GetKeyState("RWin")){
         result := "#" . result
       }
-      if (GetKeyState("Shift")){
+      if (GetKeyState("RShift") or GetKeyState("LShift")){
         result := "+" . result
       }
-      if (GetKeyState("Ctrl")){
+      if (GetKeyState("RCtrl") or GetKeyState("LCtrl")){
         result := "^" . result
       }
 
@@ -201,9 +203,13 @@ iKeySlash := new iKey("j", "9", "`?", "{F9}")
 *p::iKeyp.press()
 *a::iKeya.press()
 *s::iKeys.press()
+*d::iKeyd.press()
 *f::iKeyf.press()
 *g::iKeyg.press()
 *h::iKeyh.press()
+*j::iKeyj.press()
+*k::iKeyk.press()
+*l::iKeyl.press()
 *z::iKeyz.press()
 *x::iKeyx.press()
 *c::iKeyc.press()
@@ -214,6 +220,4 @@ iKeySlash := new iKey("j", "9", "`?", "{F9}")
 *,::iKeyComma.press()
 *.::iKeyPeriod.press()
 */::iKeySlash.press()
-*j::iKeyj.press()
-*l::iKeyl.press()
 *`;::lKeySemicolon.press()
