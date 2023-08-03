@@ -32,6 +32,7 @@ class iKey {
   }
 
   press() {
+    
     global _subDown, _superDown
     result := ""
     If (_subDown and _superDown) {
@@ -154,7 +155,7 @@ iKeyp := new iKey("{Esc}", "{Esc}", "{Esc}", "{Esc}")
 
 iKeya := new iKey("w", "`#", "@", "{F11}")
 iKeys := new iKey("a", "@", "`/", "{Backspace}")
-iKeyd := new iKey("test", "`=","{Backspace}", , "{F12}")
+iKeyd := new iKey("e", "`=","{Backspace}", "{F12}")
 iKeyf := new iKey(" ", "{Tab}", "{Delete}", "/*{Space}{Space}*/{Left 3}")
 iKeyg := new iKey("t", "`~", "", "{RWin Down}.{RWin Up}")
 iKeyh := new iKey("s", ";", ":", "::")
