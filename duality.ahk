@@ -15,7 +15,8 @@ global _subFirstDown := False
 global _superDown := False
 global _superFirstDown := False
 global _shiftDown := False
-global _ctrlDown := False
+global _ctrlDown := False 
+global _mouseDown := False
 
 ; iKey is the base class for the standard keys
 class iKey {
@@ -91,6 +92,61 @@ class iSubKey {
   }
 }
 
+class iMouseKey extends iKey {
+
+  press() {
+    
+    global _subDown, _superDown, _mouseDown
+    result := "" 
+    If (_superDown) {
+      result := this.super
+    }
+    If(_mouseDown) {
+      return
+    } else {
+      If (_subDown and _superDown) {
+        result := this.supersub
+      } else If (_subDown) {
+        result := this.sub
+      } else {
+        result := this.default
+      }
+      
+        if (GetKeyState("RAlt")){
+          result := "!" . result
+        }
+        if (GetKeyState("RWin") or GetKeyState("LWin")){
+          result := "#" . result
+        }
+        
+        if (GetKeyState("Shift")){
+          result := "+" . result
+        }
+        if (GetKeyState("Ctrl")){
+          result := "^" . result
+        }
+      }
+      _mouseDown := True
+      Send, % result
+    }
+    
+    release(){   
+    global _subDown, _superDown, _mouseDown
+    result := ""
+    _mouseDown := False
+    If (_subDown and _superDown) {
+      Send, {MButton Up}
+    } else If (_subDown) {
+      Send, {Left Up}
+    } else If (_superDown) {
+      Send, {RButton Up}
+    } else {
+      Send, {LButton Up}
+    }
+  }
+}
+
+
 ; this class tracks the super key
 class iSuperKey {
   press() {
@@ -144,7 +200,7 @@ iSuperKey := new iSuperKey()
 iKeyq := new iKey("q", "``", "`%", "````{Left}")
 iKeyw := new iKey("h", "`'", "`-", "`'`'{Left}")
 iKeye := new iKey("p", """", "`+", """""{Left}")
-iKeyr := new iKey("l", "_", "$", "${{}{}}{Left}")
+iKeyr := new iKey("r", "_", "$", "${{}{}}{Left}")
 iKeyt := new iKey("f", "λ", "Δ", "π")
 iKeyy := new iKey("y", "<", ">", "<>{Left}")
 iKeyu := new iKey("u", "(", ")", "(){Left}")
@@ -152,15 +208,15 @@ iKeyi := new iKey("i", "{Up}", "","")
 iKeyo := new iKey("o", "{{}", "{}}", "{{}{}}{Left}")
 iKeyp := new iKey("{Esc}", "{Esc}", "{Esc}", "{Esc}")
 
-iKeya := new iKey("w", "`#", "@", "{F11}")
-iKeys := new iKey("a", "@", "`/", "{Backspace}")
+iKeya := new iKey("w", "`#", "`*", "{F11}")
+iKeys := new iKey("a", "@", "`/", "`\")
 iKeyd := new iKey("e", "`=","{Backspace}", "{F12}")
 iKeyf := new iKey(" ", "{Tab}", "{Delete}", "/*{Space}{Space}*/{Left 3}")
 iKeyg := new iKey("t", "`~", "", "{RWin Down}.{RWin Up}")
 iKeyh := new iKey("s", "[", "]", "[]{Left}")
-iKeyj := new iKey("{LButton}", "{Left}", "{RButton}", "{MButton}")
+iKeyj := new iMouseKey("{LButton Down}", "{Left}", "{RButton Down}", "{MButton Down}")
 iKeyk := new iKey("{Enter}", "{Down}", "", "")
-iKeyl := new iKey("r", "{Right}","", "")
+iKeyl := new iKey("l", "{Right}","", "")
 lKeySemicolon := new iKey("k", ";", ":", "::")
 
 iKeyz := new iKey("z", "0", "", "{F10}")
@@ -168,13 +224,13 @@ iKeyx := new iKey("x", "1", "", "{F1}")
 iKeyc := new iKey("c", "2", "", "{F2}")
 iKeyv := new iKey("v", "3", "`^", "{F3}")
 iKeyb := new iKey("b", "4", "`|", "{F4}")
-iKeyn := new iKey("m", "5", "`&", "{F5}")
-iKeym := new iKey("n", "6", "`!", "{F6}")
+iKeyn := new iKey("n", "5", "`&", "{F5}")
+iKeym := new iKey("m", "6", "{`!}", "{F6}")
 iKeyComma := new iKey("d", "7", "`,", "{F7}")
 iKeyPeriod := new iKey("g", "8", "`.", "{F8}")
 iKeySlash := new iKey("j", "9", "`?", "{F9}")
 
-; map the modifier keys to their objects
+; map the modifier keys to their objects  3
 *LAlt::iSubKey.press()
 *LAlt Up::iSubKey.release()
 *Space::iSuperKey.press()
@@ -209,6 +265,7 @@ iKeySlash := new iKey("j", "9", "`?", "{F9}")
 *g::iKeyg.press()
 *h::iKeyh.press()
 *j::iKeyj.press()
+*j Up::iKeyj.release()
 *k::iKeyk.press()
 *l::iKeyl.press()
 *z::iKeyz.press()
