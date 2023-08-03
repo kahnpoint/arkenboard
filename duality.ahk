@@ -40,23 +40,20 @@ class iKey {
       result := this.sub
     } else If (_superDown) {
       result := this.super
-    } else {
-      ; add modifiers to the default value
-      result := this.default
-      if (_shiftDown) {
-        result := "+" . result
-      }
-      if (_ctrlDown) {
-        result := "^" . result
-      }
+    } 
+    
       if (GetKeyState("Alt")){
         result := "!" . result
       }
       if (GetKeyState("LWin") or GetKeyState("RWin")){
         result := "#" . result
       }
-      
-    }
+      if (GetKeyState("Shift")){
+        result := "+" . result
+      }
+      if (GetKeyState("Ctrl")){
+        result := "^" . result
+      }
 
     ; some keys require pauses between commands
     if IsObject(result) { ; check if the result is a list
@@ -135,56 +132,61 @@ class iCtrlKey {
 }
 
 ; create the modifier key objects 
-iSubKeyd := new iSubKey()
-iSuperKeyk := new iSuperKey()
-iShiftKey := new iShiftKey()
-iCtrlKey := new iCtrlKey()
+iSubKey := new iSubKey()
+iSuperKey := new iSuperKey()
+;iShiftKey := new iShiftKey()
+;iCtrlKey := new iCtrlKey()
 
-; create the key objects
-iKeyq := new iKey("q", 0, 5, "{Ctrl Down}{Shift Down}p{Shift Up}{Ctrl Up}")
-iKeyw := new iKey("w", 1, 6, "#.")
-iKeye := new iKey("e", 2, 7,  "{Esc}")
-iKeyr := new iKey("r", 3, 8, "{F2}")
-iKeyt := new iKey("t", 4, 9, ["{Ctrl Down}l{Ctrl Up}cmd{Enter}", "sleep, 1200", "code . {Enter}"])
-iKeyy := new iKey("y", "{CtrlDown}``{CtrlUp}", "{Ctrl Down}{b}{CtrlUp}", "^+`;")
-iKeyu := new iKey("u", "<", ">", "<>{Left}")
+; create the key objectslk
+; open in vs code ["{Ctrl Down}l{Ctrl Up}cmd{Enter}", "sleep, 1200", "code . {Enter}"]
+iKeyq := new iKey("q", "``", "`+", "````{Left}")
+iKeyw := new iKey("h", "`'", "{}", "`'`'{Left}")
+iKeye := new iKey("p", """", "`-", """""{Left}")
+iKeyr := new iKey("u", "_", "$", "${{}{}}{Left}")
+iKeyt := new iKey("f", "λ", "Δ", "π")
+iKeyy := new iKey("y", "<", ">", "<>{Left}")
+iKeyu := new iKey("l", "(", ")", "(){Left}")
 iKeyi := new iKey("i", "[", "]", "[]{Left}")
-iKeyo := new iKey("o", "{", "}", "{{}{}}{Left}")
-iKeyp := new iKey("p", "(", ")", "(){Left}")
-iKeya := new iKey("a", "/", "@", "/*{Space}{Space}*/{Left 3}")
-iKeys := new iKey("s", "{Tab}", "{Backspace}", "{Alt Down}{Tab}{Alt Up}")
-iKeyf := new iKey("f", "{Shift Down}", "{Delete}", "{Shift Down}")
-iKeyg := new iKey("g", "λ", "Δ", "π")
-iKeyh := new iKey("h", "_", "-", "#")
-iKeyj := new iKey(" ", "{Down}", "{Left}", "{Down}")
-iKeyl := new iKey("{Enter}", "{Up}", "{Right}","{Up}")
-lKeySemicolon := new iKey("l", "{RButton}",";", "{MButton}")
-iKeyz := new iKey("z", "`'", "{Ctrl Down}z{Ctrl Up}", "`'`'{Left}")
-iKeyx := new iKey("x", """", "{Ctrl Down}x{Ctrl Up}", """""{Left}")
-iKeyc := new iKey("c", ":", "{Ctrl Down}c{Ctrl Up}", "::")
-iKeyv := new iKey("v", "``", "{Ctrl Down}v{Ctrl Up}", "````{Left}")
-iKeyb := new iKey("b", "|", "{Ctrl Down}y{Ctrl Up}", "\")
-iKeyn := new iKey("n", "&", "+", "{^}")
-iKeym := new iKey("m", "`!", "*", "<{!}--{Space}{Space}-->{Left}{Left}{Left}{Left}")
-iKeyComma := new iKey("d", ",", "%", "")
-iKeyPeriod := new iKey("k", ".", "=", ":=")
-iKeySlash := new iKey("j", "?", "$", "${{}{}}{Left}")
+iKeyo := new iKey("o", "{{}", "{}}", "{{}{}}{Left}")
+iKeyp := new iKey("{Esc}", "{Esc}", "{Esc}", "{Esc}")
+
+iKeya := new iKey("w", "`#", "@", "{F11}")
+iKeys := new iKey("a", "@", "`/", "{Backspace}")
+iKeyd := new iKey("e", "`=","{Backspace}", , "{F12}")
+iKeyf := new iKey(" ", "{Tab}", "{Delete}", "/*{Space}{Space}*/{Left 3}")
+iKeyg := new iKey("t", "`~", "", "{RWin Down}.{RWin Up}")
+iKeyh := new iKey("s", ";", ":", "::")
+iKeyj := new iKey("{LButton}", "{Left}", "{RButton}", "{MButton}")
+iKeyk := new iKey("r", "{Down}", "", "")
+iKeyl := new iKey("{Enter}", "{Up}", "","")
+lKeySemicolon := new iKey("k", "{Right}","", "")
+
+iKeyz := new iKey("z", "0", "", "{F10}")
+iKeyx := new iKey("x", "1", "", "{F1}")
+iKeyc := new iKey("c", "2", "", "{F2}")
+iKeyv := new iKey("v", "3", "`^", "{F3}")
+iKeyb := new iKey("b", "4", "`|", "{F4}")
+iKeyn := new iKey("m", "5", "`&", "{F5}")
+iKeym := new iKey("n", "6", "`!", "{F6}")
+iKeyComma := new iKey("d", "7", "`,", "{F7}")
+iKeyPeriod := new iKey("k", "8", "`.", "{F8}")
+iKeySlash := new iKey("j", "9", "`?", "{F9}")
 
 ; map the modifier keys to their objects
-*d::iSubKeyd.press()
-*d Up::iSubKeyd.release()
-*k::iSuperKeyk.press()
-*k Up::iSuperKeyk.release()
+*Space::iSubKey.press()
+*Space Up::iSubKey.release()
+*CapsLock::iSuperKey.press()
+*CapsLock Up::iSuperKey.release() 
 
-*LShift::iShiftKey.press()
-*LShift Up::iShiftKey.release()
-*RShift::iShiftKey.press()
-*RShift Up::iShiftKey.release()
+;*LShift::iShiftKey.press()
+;*LShift Up::iShiftKey.release()
+;*RShift::iShiftKey.press()
+;*RShift Up::iShiftKey.release()
 
-*LCtrl::iCtrlKey.press()
-*LCtrl Up::iCtrlKey.release()
-*RCtrl::iCtrlKey.press()
-*RCtrl Up::iCtrlKey.release()
+;*LCtrl::iCtrlKey.press()
+;*LCtrl Up::iCtrlKey.release()
+;*RCtrl::iCtrlKey.press()
+;*RCtrl Up::iCtrlKey.release()
 
 ; map the keys to their objects
 *q::iKeyq.press()
@@ -200,7 +202,6 @@ iKeySlash := new iKey("j", "?", "$", "${{}{}}{Left}")
 *a::iKeya.press()
 *s::iKeys.press()
 *f::iKeyf.press()
-*f Up::iShiftKey.release() ; this is a special case for the f key's downshift behavior
 *g::iKeyg.press()
 *h::iKeyh.press()
 *z::iKeyz.press()
@@ -216,6 +217,3 @@ iKeySlash := new iKey("j", "?", "$", "${{}{}}{Left}")
 *j::iKeyj.press()
 *l::iKeyl.press()
 *`;::lKeySemicolon.press()
-
-; disable the spacebar for training purposes
-*Space::return
