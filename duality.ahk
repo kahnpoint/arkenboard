@@ -84,8 +84,10 @@ class iMouseKey extends iKey {
     
     global _subDown, _superDown, _mouseDown
     result := "" 
-    If (_subDown) {
-      result := this.sub
+    If (_superDown) {
+      result := this.super
+      _mouseDown := True
+      Send, % result
     }
     
     If(not _mouseDown) {
@@ -112,9 +114,9 @@ class iMouseKey extends iKey {
         if (GetKeyState("Ctrl")){
           result := "^" . result
         }
-      }
-      _mouseDown := True
-      Send, % result
+        Send, % result
+      } 
+        _mouseDown := True
     }
     
     release(){   
@@ -122,7 +124,7 @@ class iMouseKey extends iKey {
     _mouseDown := False
     If (_subDown and _superDown) {
       Send, {MButton Up}
-    } else If (_superDown) {
+    } else If (_subDown) {
       Send, {RButton Up}
     } else {
       Send, {LButton Up}
@@ -204,7 +206,7 @@ iKeyr := new iKey("r", "_", "$", "${{}{}}{Left}")
 iKeyt := new iKey("f", "λ", "Δ", "π")
 iKeyy := new iKey("y", "<", ">", "<>{Left}")
 iKeyu := new iKey("u", "(", ")", "(){Left}")
-iKeyi := new iKey("i", "{Up}", "","")
+iKeyi := new iKey("i", "","{Up}", "")
 iKeyo := new iKey("o", "{{}", "{}}", "{{}{}}{Left}")
 iKeyp := new iKey("{Esc}", "{Esc}", "{Esc}", "{Esc}")
 
@@ -214,9 +216,9 @@ iKeyd := new iKey("e", "`=","{Backspace}", "{F12}")
 iKeyf := new iKey(" ", "{Tab}", "{Delete}", "/*{Space}{Space}*/{Left 3}")
 iKeyg := new iKey("t", "`~", "", "{RWin Down}.{RWin Up}")
 iKeyh := new iKey("s", "[", "]", "[]{Left}")
-iKeyj := new iMouseKey("{LButton Down}", "{Left}", "{RButton Down}", "{MButton Down}")
-iKeyk := new iKey("{Enter}", "{Down}", "^+;", "")
-iKeyl := new iKey("l", "{Right}","^``", "^``^b")   
+iKeyj := new iMouseKey("{LButton Down}",  "{RButton Down}", "{Left}", "{MButton Down}")
+iKeyk := new iKey("{Enter}", "^+;", "{Down}", "")
+iKeyl := new iKey("l", "^``","{Right}", "^``^b")   
 lKeySemicolon := new iKey("k", ";", ":", "::")
 
 iKeyz := new iKey("z", "0", "", "{F10}")
