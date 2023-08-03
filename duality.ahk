@@ -32,7 +32,7 @@ class iKey {
   }
 
   press() {
-    global _subDown, _superDown, _shiftDown, _ctrlDown
+    global _subDown, _superDown
     result := ""
     If (_subDown and _superDown) {
       result := this.supersub
@@ -154,7 +154,7 @@ iKeyp := new iKey("{Esc}", "{Esc}", "{Esc}", "{Esc}")
 
 iKeya := new iKey("w", "`#", "@", "{F11}")
 iKeys := new iKey("a", "@", "`/", "{Backspace}")
-iKeyd := new iKey("e", "`=","{Backspace}", , "{F12}")
+iKeyd := new iKey("test", "`=","{Backspace}", , "{F12}")
 iKeyf := new iKey(" ", "{Tab}", "{Delete}", "/*{Space}{Space}*/{Left 3}")
 iKeyg := new iKey("t", "`~", "", "{RWin Down}.{RWin Up}")
 iKeyh := new iKey("s", ";", ":", "::")
@@ -171,7 +171,7 @@ iKeyb := new iKey("b", "4", "`|", "{F4}")
 iKeyn := new iKey("m", "5", "`&", "{F5}")
 iKeym := new iKey("n", "6", "`!", "{F6}")
 iKeyComma := new iKey("d", "7", "`,", "{F7}")
-iKeyPeriod := new iKey("k", "8", "`.", "{F8}")
+iKeyPeriod := new iKey("g", "8", "`.", "{F8}")
 iKeySlash := new iKey("j", "9", "`?", "{F9}")
 
 ; map the modifier keys to their objects
