@@ -15,8 +15,6 @@ global _subDown := False
 global _subFirstDown := False
 global _superDown := False
 global _superFirstDown := False
-global _shiftDown := False
-global _ctrlDown := False 
 global _mouseDown := False
 
 ; iKey is the base class for the standard keys
@@ -67,7 +65,13 @@ class iKey {
         ; handle sleep commands separately
         if InStr(command, "sleep,") {
           Sleep, % SubStr(command, InStr(command, ",") + 1)
-        } else {
+        }  if InStr(command, "SoundDn,") {
+          Send {Volume_Down}
+        }else if InStr(command, "SoundUp,") {
+          Send {Volume_Up}
+        }else if InStr(command, "SoundSet,") {
+          SoundSet, +0, , mute
+        }else{
           SendInput, % command
         }
       }
@@ -122,7 +126,7 @@ class iMouseKey extends iKey {
     release(){   
     global _subDown, _superDown, _mouseDown
     _mouseDown := False
-    If (_subDown and _superDown) {
+    If (_subDown and _superDown) { 
       Send, {MButton Up}
     } else If (_superDown) {
       Send, {RButton Up}
@@ -131,6 +135,7 @@ class iMouseKey extends iKey {
     }
   }
 }
+
 
 ; this class tracks the sub key
 class iSubKey {
@@ -165,39 +170,10 @@ class iSuperKey {
   }
 }
 
-; this class tracks the shift key
-class iShiftKey {
-  press() {
-    global
-    _shiftDown := True
-    SendInput, {Shift Down}
-  }
-  release() {
-    global
-    _shiftDown := False
-    SendInput, {Shift Up}
-  }
-}
-
-; this class tracks the ctrl key
-class iCtrlKey {
-  press() {
-    global
-    _ctrlDown := True
-    SendInput, {Ctrl Down}
-  }
-  release() {
-    global
-    _ctrlDown := False
-    SendInput, {Ctrl Up}
-  }
-}
-
 ; create the modifier key objects 
 iSubKey := new iSubKey()
 iSuperKey := new iSuperKey()
-;iShiftKey := new iShiftKey()
-;iCtrlKey := new iCtrlKey()
+
 ;{Ctrl Down}l{Ctrl Up}cmd{Enter}", "sleep, 1200", "code . {Enter}"]
 iKeyq := new iKey("q", "`~", "1", "{F1}")
 iKeyw := new iKey("s", "`-", "2", "{F2}")
@@ -214,22 +190,22 @@ iKeyp := new iKey("{Esc}", "{RWin Down}.{RWin Up}", "0", "{F10}")
 iKeya := new iKey("w", "`/", "{#}", "{F11}")
 iKeys := new iKey("a", "{Backspace}","{Backspace}",  "{Backspace}")
 iKeyd := new iKey("e", "{Delete}", "{Delete}", "{Delete}")
-iKeyf := new iKey(" ",  " ", "{Tab}", "{Tab}")
-iKeyg := new iKey("t", "θ", "Δ", "{F12}")
+iKeyf := new iKey(" ",  "{Tab}", "{Tab}", "{Tab}")
+iKeyg := new iKey("t", ["SoundDn, -5"], ["SoundUp, +5"], ["SoundSet, 0"])
 
-iKeyh := new iKey("h", "φ", "τ", "π") ;
+iKeyh := new iKey("h", "^+;", "^``", "^``^b") ;
 iKeyj := new iMouseKey("{LButton Down}",   "{Left}", "{RButton Down}", "{MButton Down}")
-iKeyk := new iKey("{Enter}", "{Down}", "^+;",  "")
-iKeyl := new iKey("l", "{Right}", "^``", "^``^b")   
+iKeyk := new iKey("{Enter}", "{Down}", "{PgDn}",  "{End}")
+iKeyl := new iKey("l", "{Right}", "{PgUp}", "{Home}")   
 lKeySemicolon := new iKey("p", ";", ":", "::")
 
-iKeyz := new iKey("z", "[", "]", "[]{Left}")
+iKeyz := new iKey("z","`|","`\", "{F12}")
 iKeyx := new iKey("x", "{{}", "{}}", "{{}{}}{Left}")
 iKeyc := new iKey("c", "(", ")", "(){Left}")
 iKeyv := new iKey("v",  "<", ">", "<>{Left}")
-iKeyb := new iKey("b","`|","{^}", "`\")
+iKeyb := new iKey("b", "[", "]", "[]{Left}")
 
-iKeyn := new iKey("n", "`&","", "")
+iKeyn := new iKey("n", "`&","`{^}", "{PrintScreen}")
 iKeym := new iKey("m", "{!}", "``", "````{Left}")
 iKeyComma := new iKey("d", ",", "`'", "`'`'{Left}")
 iKeyPeriod := new iKey("k", ".", """", """""{Left}")
@@ -240,17 +216,6 @@ iKeySlash := new iKey("j", "`?", "/*{Space}{Space}*/{Left 3}", "${{}{}}{Left}")
 *LAlt Up::iSubKey.release()
 *Space::iSuperKey.press()
 *Space Up::iSuperKey.release()
-
-
-;*LShift::iShiftKey.press()
-;*LShift Up::iShiftKey.release()
-;*RShift::iShiftKey.press()
-;*RShift Up::iShiftKey.release()
-
-;*LCtrl::iCtrlKey.press()
-;*LCtrl Up::iCtrlKey.release()
-;*RCtrl::iCtrlKey.press()
-;*RCtrl Up::iCtrlKey.release()
 
 ; map the keys to their objects
 *q::iKeyq.press()
@@ -284,3 +249,8 @@ iKeySlash := new iKey("j", "`?", "/*{Space}{Space}*/{Left 3}", "${{}{}}{Left}")
 *.::iKeyPeriod.press()
 */::iKeySlash.press()
 *`;::lKeySemicolon.press()
+
+; alt tab abilities
+RAlt & j::AltTabMenu
+RAlt & l::AltTab
+RAlt & k::ShiftAltTab
