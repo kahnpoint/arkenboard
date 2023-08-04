@@ -1,4 +1,4 @@
-﻿; Duality is my keyboard layout
+﻿; Duality is a 5x3+2 keyboard layout
 ; - @kahnpoint (adam kahn) 2023
 
 #NoEnv
