@@ -84,8 +84,8 @@ class iMouseKey extends iKey {
     
     global _subDown, _superDown, _mouseDown
     result := "" 
-    If (_superDown) {
-      result := this.super
+    If (_subDown and not _superDown) {
+      result := this.sub
       _mouseDown := True
       Send, % result
     }
@@ -124,7 +124,7 @@ class iMouseKey extends iKey {
     _mouseDown := False
     If (_subDown and _superDown) {
       Send, {MButton Up}
-    } else If (_subDown) {
+    } else If (_superDown) {
       Send, {RButton Up}
     } else {
       Send, {LButton Up}
@@ -200,8 +200,8 @@ iSuperKey := new iSuperKey()
 ;iCtrlKey := new iCtrlKey()
 ;{Ctrl Down}l{Ctrl Up}cmd{Enter}", "sleep, 1200", "code . {Enter}"]
 iKeyq := new iKey("q", "`~", "1", "{F1}")
-iKeyw := new iKey("w", "`-", "2", "{F2}")
-iKeye := new iKey("d", "{+}", "3", "{F3}")
+iKeyw := new iKey("s", "`-", "2", "{F2}")
+iKeye := new iKey("f", "{+}", "3", "{F3}")
 iKeyr := new iKey("r", "`/", "4", "{F4}")
 iKeyt := new iKey("g", "{*}", "5", "{F5}")
 
@@ -211,7 +211,7 @@ iKeyi := new iKey("i", "{Up}","8", "{F8}")
 iKeyo := new iKey("o", "`=", "9", "{F9}")
 iKeyp := new iKey("{Esc}", "{RWin Down}.{RWin Up}", "0", "{F10}")
 
-iKeya := new iKey("s", "`/", "#", "{F11}")
+iKeya := new iKey("w", "`/", "{#}", "{F11}")
 iKeys := new iKey("a", "{Backspace}","{Backspace}",  "{Backspace}")
 iKeyd := new iKey("e", "{Delete}", "{Delete}", "{Delete}")
 iKeyf := new iKey(" ",  " ", "{Tab}", "{Tab}")
@@ -231,7 +231,7 @@ iKeyb := new iKey("b","`|","{^}", "`\")
 
 iKeyn := new iKey("n", "`&","", "")
 iKeym := new iKey("m", "{!}", "``", "````{Left}")
-iKeyComma := new iKey("f", ",", "`'", "`'`'{Left}")
+iKeyComma := new iKey("d", ",", "`'", "`'`'{Left}")
 iKeyPeriod := new iKey("k", ".", """", """""{Left}")
 iKeySlash := new iKey("j", "`?", "/*{Space}{Space}*/{Left 3}", "${{}{}}{Left}")
 
