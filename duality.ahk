@@ -177,7 +177,7 @@ iSuperKey := new iSuperKey()
 ;{Ctrl Down}l{Ctrl Up}cmd{Enter}", "sleep, 1200", "code . {Enter}"]
 iKeyq := new iKey("q", "`~", "1", "{F1}")
 iKeyw := new iKey("s", "`-", "2", "{F2}")
-iKeye := new iKey("f", "{+}", "3", "{F3}")
+iKeye := new iKey("d", "{+}", "3", "{F3}")
 iKeyr := new iKey("r", "`/", "4", "{F4}")
 iKeyt := new iKey("g", "{*}", "5", "{F5}")
 
@@ -204,10 +204,10 @@ iKeyx := new iKey("x", "{{}", "{}}", "{{}{}}{Left}")
 iKeyc := new iKey("c", "(", ")", "(){Left}")
 iKeyv := new iKey("v",  "<", ">", "<>{Left}")
 iKeyb := new iKey("b", "[", "]", "[]{Left}")
-
+ff
 iKeyn := new iKey("n", "`&","`{^}", "{PrintScreen}")
 iKeym := new iKey("m", "{!}", "``", "````{Left}")
-iKeyComma := new iKey("d", ",", "`'", "`'`'{Left}")
+iKeyComma := new iKey("f", ",", "`'", "`'`'{Left}")
 iKeyPeriod := new iKey("k", ".", """", """""{Left}")
 iKeySlash := new iKey("j", "`?", "/*{Space}{Space}*/{Left 3}", "${{}{}}{Left}")
 
