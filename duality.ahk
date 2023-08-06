@@ -207,9 +207,9 @@ iKeyb := new iKey("b", "[", "]", "[]{Left}")
 
 iKeyn := new iKey("n", "`&","`{^}", "{PrintScreen}")
 iKeym := new iKey("m", "{!}", "``", "````{Left}")
-iKeyComma := new iKey("j", ",", "`'", "`'`'{Left}")
+iKeyComma := new iKey("f", ",", "`'", "`'`'{Left}")
 iKeyPeriod := new iKey("k", ".", """", """""{Left}")
-iKeySlash := new iKey("f", "`?", "/*{Space}{Space}*/{Left 3}", "${{}{}}{Left}")
+iKeySlash := new iKey("j", "`?", "/*{Space}{Space}*/{Left 3}", "${{}{}}{Left}")
 
 ; map the modifier keys to their objects  3
 *LAlt::iSubKey.press()
