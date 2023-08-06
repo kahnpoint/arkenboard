@@ -187,7 +187,7 @@ iKeyi := new iKey("i", "{Up}","8", "{F8}")
 iKeyo := new iKey("o", "`=", "9", "{F9}")
 iKeyp := new iKey("{Esc}", "{RWin Down}.{RWin Up}", "0", "{F10}")
 
-iKeya := new iKey("w", "{@}", "{#}", "{F11}")
+iKeya := new iKey("w", "{#}", "{@}", "{F11}")
 iKeys := new iKey("a", "{Backspace}","{Backspace}",  "{Backspace}")
 iKeyd := new iKey("e", "{Delete}", "{Delete}", "{Delete}")
 iKeyf := new iKey(" ",  "{Tab}", "{Tab}", "{Tab}")
@@ -207,9 +207,9 @@ iKeyb := new iKey("b", "[", "]", "[]{Left}")
 
 iKeyn := new iKey("n", "`&","`{^}", "{PrintScreen}")
 iKeym := new iKey("m", "{!}", "``", "````{Left}")
-iKeyComma := new iKey("f", ",", "`'", "`'`'{Left}")
+iKeyComma := new iKey("j", ",", "`'", "`'`'{Left}")
 iKeyPeriod := new iKey("k", ".", """", """""{Left}")
-iKeySlash := new iKey("j", "`?", "/*{Space}{Space}*/{Left 3}", "${{}{}}{Left}")
+iKeySlash := new iKey("f", "`?", "/*{Space}{Space}*/{Left 3}", "${{}{}}{Left}")
 
 ; map the modifier keys to their objects  3
 *LAlt::iSubKey.press()
