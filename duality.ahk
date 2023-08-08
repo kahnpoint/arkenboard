@@ -176,8 +176,8 @@ iSuperKey := new iSuperKey()
 
 ;{Ctrl Down}l{Ctrl Up}cmd{Enter}", "sleep, 1200", "code . {Enter}"]
 iKeyq := new iKey("q", "`~", "1", "{F1}")
-iKeyw := new iKey("s", "`-", "2", "{F2}")
-iKeye := new iKey("f", "{+}", "3", "{F3}")
+iKeyw := new iKey("w", "`-", "2", "{F2}")
+iKeye := new iKey("s", "{+}", "3", "{F3}")
 iKeyr := new iKey("r", "`/", "4", "{F4}")
 iKeyt := new iKey("g", "{*}", "5", "{F5}")
 
@@ -187,7 +187,7 @@ iKeyi := new iKey("i", "{Up}","8", "{F8}")
 iKeyo := new iKey("o", "`=", "9", "{F9}")
 iKeyp := new iKey("{Esc}", "{RWin Down}.{RWin Up}", "0", "{F10}")
 
-iKeya := new iKey("w", "{#}", "{@}", "{F11}")
+iKeya := new iKey("f", "{#}", "{@}", "{F11}")
 iKeys := new iKey("a", "{Backspace}","{Backspace}",  "{Backspace}")
 iKeyd := new iKey("e", "{Delete}", "{Delete}", "{Delete}")
 iKeyf := new iKey(" ",  "{Tab}", "{Tab}", "{Tab}")
@@ -197,7 +197,7 @@ iKeyh := new iKey("h", "^+;", "^``", "^``^b") ;
 iKeyj := new iMouseKey("{LButton Down}",   "{Left}", "{RButton Down}", "{MButton Down}")
 iKeyk := new iKey("{Enter}", "{Down}", "{PgDn}",  "{End}")
 iKeyl := new iKey("l", "{Right}", "{PgUp}", "{Home}")   
-lKeySemicolon := new iKey("p", ";", ":", "::")
+lKeySemicolon := new iKey("j", ";", ":", "::")
 
 iKeyz := new iKey("z","`|","`\", "{F12}")
 iKeyx := new iKey("x", "{{}", "{}}", "{{}{}}{Left}")
@@ -208,8 +208,8 @@ iKeyb := new iKey("b", "[", "]", "[]{Left}")
 iKeyn := new iKey("n", "`&","`{^}", "{PrintScreen}")
 iKeym := new iKey("m", "{!}", "``", "````{Left}")
 iKeyComma := new iKey("d", ",", "`'", "`'`'{Left}")
-iKeyPeriod := new iKey("k", ".", """", """""{Left}")
-iKeySlash := new iKey("j", "`?", "/*{Space}{Space}*/{Left 3}", "${{}{}}{Left}")
+iKeyPeriod := new iKey("p", ".", """", """""{Left}")
+iKeySlash := new iKey("k", "`?", "/*{Space}{Space}*/{Left 3}", "${{}{}}{Left}")
 
 ; map the modifier keys to their objects  3
 *LAlt::iSubKey.press()
