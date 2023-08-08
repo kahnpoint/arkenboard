@@ -197,7 +197,7 @@ iKeyh := new iKey("h", "^+;", "^``", "^``^b") ;
 iKeyj := new iMouseKey("{LButton Down}",   "{Left}", "{RButton Down}", "{MButton Down}")
 iKeyk := new iKey("{Enter}", "{Down}", "{PgDn}",  "{End}")
 iKeyl := new iKey("l", "{Right}", "{PgUp}", "{Home}")   
-lKeySemicolon := new iKey("j", ";", ":", "::")
+lKeySemicolon := new iKey("p", ";", ":", "::")
 
 iKeyz := new iKey("z","`|","`\", "{F12}")
 iKeyx := new iKey("x", "{{}", "{}}", "{{}{}}{Left}")
@@ -208,8 +208,8 @@ iKeyb := new iKey("b", "[", "]", "[]{Left}")
 iKeyn := new iKey("n", "`&","`{^}", "{PrintScreen}")
 iKeym := new iKey("m", "{!}", "``", "````{Left}")
 iKeyComma := new iKey("d", ",", "`'", "`'`'{Left}")
-iKeyPeriod := new iKey("p", ".", """", """""{Left}")
-iKeySlash := new iKey("k", "`?", "/*{Space}{Space}*/{Left 3}", "${{}{}}{Left}")
+iKeyPeriod := new iKey("k", ".", """", """""{Left}")
+iKeySlash := new iKey("j", "`?", "/*{Space}{Space}*/{Left 3}", "${{}{}}{Left}")
 
 ; map the modifier keys to their objects  3
 *LAlt::iSubKey.press()
