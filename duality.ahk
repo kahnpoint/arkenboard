@@ -188,8 +188,8 @@ iKeyo := new iKey("o", "`=", "9", "{F9}")
 iKeyp := new iKey("{Esc}", "{RWin Down}.{RWin Up}", "0", "{F10}")
 
 iKeya := new iKey("f", "{#}", "{@}", "{F11}")
-iKeys := new iKey("e", "{Backspace}","{Backspace}",  "{Backspace}")
-iKeyd := new iKey("l", "{Delete}", "{Delete}", "{Delete}")
+iKeys := new iKey("l", "{Backspace}","{Backspace}",  "{Backspace}")
+iKeyd := new iKey("e", "{Delete}", "{Delete}", "{Delete}")
 iKeyf := new iKey(" ",  "{Tab}", "{Tab}", "/*{Space}{Space}*/{Left 3}")
 iKeyg := new iKey("t", ["SoundDn, -5"], ["SoundUp, +5"], ["SoundSet, 0"])
 
