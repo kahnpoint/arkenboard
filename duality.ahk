@@ -188,15 +188,15 @@ iKeyo := new iKey("o", "`=", "9", "{F9}")
 iKeyp := new iKey("{Esc}", "{RWin Down}.{RWin Up}", "0", "{F10}")
 
 iKeya := new iKey("f", "{#}", "{@}", "{F11}")
-iKeys := new iKey("a", "{Backspace}","{Backspace}",  "{Backspace}")
-iKeyd := new iKey("e", "{Delete}", "{Delete}", "{Delete}")
-iKeyf := new iKey(" ",  "{Tab}", "{Tab}", "{Tab}")
+iKeys := new iKey("e", "{Backspace}","{Backspace}",  "{Backspace}")
+iKeyd := new iKey("l", "{Delete}", "{Delete}", "{Delete}")
+iKeyf := new iKey(" ",  "{Tab}", "{Tab}", "/*{Space}{Space}*/{Left 3}")
 iKeyg := new iKey("t", ["SoundDn, -5"], ["SoundUp, +5"], ["SoundSet, 0"])
 
 iKeyh := new iKey("h", "^+;", "^``", "^``^b") ;
 iKeyj := new iMouseKey("{LButton Down}",   "{Left}", "{RButton Down}", "{MButton Down}")
 iKeyk := new iKey("{Enter}", "{Down}", "{PgDn}",  "{End}")
-iKeyl := new iKey("l", "{Right}", "{PgUp}", "{Home}")   
+iKeyl := new iKey("a", "{Right}", "{PgUp}", "{Home}")   
 lKeySemicolon := new iKey("p", ";", ":", "::")
 
 iKeyz := new iKey("z","`|","`\", "{F12}")
@@ -209,7 +209,7 @@ iKeyn := new iKey("n", "`&","`{^}", "{PrintScreen}")
 iKeym := new iKey("m", "{!}", "``", "````{Left}")
 iKeyComma := new iKey("d", ",", "`'", "`'`'{Left}")
 iKeyPeriod := new iKey("k", ".", """", """""{Left}")
-iKeySlash := new iKey("j", "`?", "/*{Space}{Space}*/{Left 3}", "${{}{}}{Left}")
+iKeySlash := new iKey("j", "`?", "{$}", "${{}{}}{Left}")
 
 ; map the modifier keys to their objects  3
 *LAlt::iSubKey.press()
