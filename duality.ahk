@@ -189,13 +189,13 @@ iKeyp := new iKey("{Esc}", "{RWin Down}.{RWin Up}", "0", "{F10}")
 
 iKeya := new iKey("f", "{#}", "{@}", "{F11}")
 iKeys := new iKey("l", "{Backspace}","{Backspace}",  "{Backspace}")
-iKeyd := new iKey("e", "{Delete}", "{Delete}", "{Delete}")
+iKeyd := new iKey("{Enter}", "{Delete}", "{Delete}", "{Delete}")
 iKeyf := new iKey(" ",  "{Tab}", "{Tab}", "/*{Space}{Space}*/{Left 3}")
 iKeyg := new iKey("t", ["SoundDn, -5"], ["SoundUp, +5"], ["SoundSet, 0"])
 
 iKeyh := new iKey("h", "^+;", "^``", "^``^b") ;
 iKeyj := new iMouseKey("{LButton Down}",   "{Left}", "{RButton Down}", "{MButton Down}")
-iKeyk := new iKey("{Enter}", "{Down}", "{PgDn}",  "{End}")
+iKeyk := new iKey("e", "{Down}", "{PgDn}",  "{End}")
 iKeyl := new iKey("a", "{Right}", "{PgUp}", "{Home}")   
 lKeySemicolon := new iKey("p", ";", ":", "::")
 
