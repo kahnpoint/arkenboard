@@ -16,6 +16,9 @@ global _subFirstDown := False
 global _superDown := False
 global _superFirstDown := False
 global _mouseDown := False
+global _mouseMDown := False
+global _mouseRDown := False
+global _mouseLDown := False
 
 ; iKey is the base class for the standard keys
 class iKey {
@@ -88,21 +91,22 @@ class iMouseKey extends iKey {
     
     global _subDown, _superDown, _mouseDown
     result := "" 
-    If (_subDown and not _superDown) {
-      result := this.sub
-      _mouseDown := True
-      Send, % result
-    }
     
     If(not _mouseDown) {
+      global _subDown, _superDown, _mouseDown, _mouseMDown, _mouseRDown, _mouseLDown
+      result := ""
       If (_subDown and _superDown) {
         result := this.supersub
-      } else If (_superDown ) {
-        result := this.super
+        _mouseMDown := True
       } else If (_subDown) {
         result := this.sub
-      }else{
+        _mouseRDown := True
+      } else If (_superDown) {
+        result := this.super
+        _mouseMDown := True
+      } else {
         result := this.default
+        _mouseLDown := True
       }
       
         if (GetKeyState("RAlt")){
@@ -124,13 +128,16 @@ class iMouseKey extends iKey {
     }
     
     release(){   
-    global _subDown, _superDown, _mouseDown
+    global _subDown, _superDown, _mouseDown, _mouseMDown, _mouseRDown, _mouseLDown
     _mouseDown := False
-    If (_subDown and _superDown) { 
-      Send, {MButton Up}
-    } else If (_superDown) {
+    If (_mouseRDown) {
+      _mouseRDown := False
       Send, {RButton Up}
-    } else {
+    } else If (_mouseMDown) {
+      _mouseMDown := False
+      Send, {MButton Up}
+    } else If (_mouseLDown) {
+      _mouseLDown := False
       Send, {LButton Up}
     }
   }
