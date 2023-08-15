@@ -183,7 +183,7 @@ iKeyt := new iKey("y", "{*}", "5", "{F5}")
 
 iKeyy := new iKey("f", "%", "6", "{F6}")
 iKeyu := new iKey("r", "_", "7", "{F7}")
-iKeyi := new iKey("s", "{Up}","8", "{F8}")
+iKeyi := new iKey("h", "{Up}","8", "{F8}")
 iKeyo := new iKey("l", "`=", "9", "{F9}")
 iKeyp := new iKey("{Esc}", "{RWin Down}.{RWin Up}", "0", "{F10}")
 
@@ -193,7 +193,7 @@ iKeyd := new iKey("e", "{Delete}", "{Delete}", "{Delete}")
 iKeyf := new iMouseKey("{LButton Down}",   "{RButton Down}", "{MButton Down}", "{MButton Down}")
 iKeyg := new iKey("g", ["SoundDn, -5"], ["SoundUp, +5"], ["SoundSet, 0"])
 
-iKeyh := new iKey("h", "^+;", "^``", "^``^b") 
+iKeyh := new iKey("k", "^+;", "^``", "^``^b") 
 iKeyj := new iKey(" ",  "{Left}", "{Tab}", "{Tab}")
 iKeyk := new iKey("{Enter}", "{Down}", "{PgDn}",  "<{!}--{Space}{Space}-->{Left 4}")
 iKeyl := new iKey("t", "{Right}", "{PgUp}", "/*{Space}{Space}*/{Left 3}")   
@@ -207,8 +207,8 @@ iKeyb := new iKey("b", "`|","`\", "{F12}")
 
 iKeyn := new iKey("m", "{!}","`{^}", "{PrintScreen}")
 iKeym := new iKey("n", "`&", "``", "````{Left}")
-iKeyComma := new iKey("d", ",", "`'", "`'`'{Left}")
-iKeyPeriod := new iKey("k", ".", """", """""{Left}")
+iKeyComma := new iKey("s", ",", "`'", "`'`'{Left}")
+iKeyPeriod := new iKeyhhdddddddddddsk("d", ".", """", """""{Left}")
 iKeySlash := new iKey("j", "`?", "{$}", "${{}{}}{Left}")
 
 ; map the modifier keys to their objects  3
