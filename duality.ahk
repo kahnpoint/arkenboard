@@ -182,7 +182,7 @@ iKeyr := new iKey("i", "`/", "4", "{F4}")
 iKeyt := new iKey("y", "{*}", "5", "{F5}")
 
 iKeyy := new iKey("k", "%", "6", "{F6}")
-iKeyu := new iKey("r", "_", "7", "{F7}")
+iKeyu := new iKey("s", "_", "7", "{F7}")
 iKeyi := new iKey("h", "{Up}","8", "{F8}")
 iKeyo := new iKey("l", "`=", "9", "{F9}")
 iKeyp := new iKey("{Esc}", "{RWin Down}.{RWin Up}", "0", "{F10}")
@@ -207,7 +207,7 @@ iKeyb := new iKey("b", "`|","`\", "{F12}")
 
 iKeyn := new iKey("m", "{!}","`{^}", "{PrintScreen}")
 iKeym := new iKey("n", "`&", "``", "````{Left}")
-iKeyComma := new iKey("s", ",", "`'", "`'`'{Left}")
+iKeyComma := new iKey("r", ",", "`'", "`'`'{Left}")
 iKeyPeriod := new iKey("d", ".", """", """""{Left}")
 iKeySlash := new iKey("j", "`?", "{$}", "${{}{}}{Left}")
 
