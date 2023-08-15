@@ -176,8 +176,8 @@ iSuperKey := new iSuperKey()
 
 ;{Ctrl Down}l{Ctrl Up}cmd{Enter}", "sleep, 1200", "code . {Enter}"]
 iKeyq := new iKey("q", "`~", "1", "{F1}")
-iKeyw := new iKey("u", "`-", "2", "{F2}")
-iKeye := new iKey("i", "{+}", "3", "{F3}")
+iKeyw := new iKey("o", "`-", "2", "{F2}")
+iKeye := new iKey("u", "{+}", "3", "{F3}")
 iKeyr := new iKey("o", "`/", "4", "{F4}")
 iKeyt := new iKey("y", "{*}", "5", "{F5}")
 
