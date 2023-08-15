@@ -208,7 +208,7 @@ iKeyb := new iKey("b", "`|","`\", "{F12}")
 iKeyn := new iKey("m", "{!}","`{^}", "{PrintScreen}")
 iKeym := new iKey("n", "`&", "``", "````{Left}")
 iKeyComma := new iKey("s", ",", "`'", "`'`'{Left}")
-iKeyPeriod := new iKeyhhdddddddddddsk("d", ".", """", """""{Left}")
+iKeyPeriod := new iKey("d", ".", """", """""{Left}")
 iKeySlash := new iKey("j", "`?", "{$}", "${{}{}}{Left}")
 
 ; map the modifier keys to their objects  3
