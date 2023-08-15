@@ -174,7 +174,7 @@ class iSuperKey {
 iSubKey := new iSubKey()
 iSuperKey := new iSuperKey()
 
-;{Ctrl Down}l{Ctrl Up}cmd{Enter}", "sleep, 1200", "code . {Enter}"]
+;["{Ctrl Down}l{Ctrl Up}cmd{Enter}", "sleep, 1200", "code . {Enter}"]
 iKeyq := new iKey("q", "`~", "1", "{F1}")
 iKeyw := new iKey("o", "`-", "2", "{F2}")
 iKeye := new iKey("i", "{+}", "3", "{F3}")
@@ -189,24 +189,24 @@ iKeyp := new iKey("{Esc}", "{RWin Down}.{RWin Up}", "0", "{F10}")
 
 iKeya := new iKey("w", "{#}", "{@}", "{F11}")
 iKeys := new iKey("a", "{Backspace}","{Backspace}",  "{Backspace}")
-iKeyd := new iKey("e", "{Delete}", "{Delete}", "{Delete}")
-iKeyf := new iMouseKey("{LButton Down}",   "{RButton Down}", "{MButton Down}")
+iKeyd := new iKey("e", "{Delete}", "{Delete}", "{Delete}") 
+iKeyf := new iMouseKey("{LButton Down}",   "{RButton Down}", "{MButton Down}", "{MButton Down}")
 iKeyg := new iKey("t", ["SoundDn, -5"], ["SoundUp, +5"], ["SoundSet, 0"])
 
 iKeyh := new iKey("h", "^+;", "^``", "^``^b") 
-iKeyj := new iKey(" ",  "{Left}", "{Tab}", "/*{Space}{Space}*/{Left 3}")
-iKeyk := new iKey("{Enter}", "{Down}", "{PgDn}",  "{End}")
-iKeyl := new iKey("r", "{Right}", "{PgUp}", "{Home}")   
+iKeyj := new iKey(" ",  "{Left}", "{Tab}", "{Tab}")
+iKeyk := new iKey("{Enter}", "{Down}", "{PgDn}",  "<{!}--{Space}{Space}-->{Left 4}")
+iKeyl := new iKey("r", "{Right}", "{PgUp}", "/*{Space}{Space}*/{Left 3}")   
 lKeySemicolon := new iKey("f", ";", ":", "::")
 
-iKeyz := new iKey("z","`|","`\", "{F12}")
+iKeyz := new iKey("z", "[", "]", "[]{Left}")
 iKeyx := new iKey("x", "{{}", "{}}", "{{}{}}{Left}")
 iKeyc := new iKey("c", "(", ")", "(){Left}")
 iKeyv := new iKey("v",  "<", ">", "<>{Left}")
-iKeyb := new iKey("b", "[", "]", "[]{Left}")
+iKeyb := new iKey("b", "`|","`\", "{F12}")
 
-iKeyn := new iKey("m", "`&","`{^}", "{PrintScreen}")
-iKeym := new iKey("n", "{!}", "``", "````{Left}")
+iKeyn := new iKey("m", "{!}","`{^}", "{PrintScreen}")
+iKeym := new iKey("n", "`&", "``", "````{Left}")
 iKeyComma := new iKey("d", ",", "`'", "`'`'{Left}")
 iKeyPeriod := new iKey("k", ".", """", """""{Left}")
 iKeySlash := new iKey("j", "`?", "{$}", "${{}{}}{Left}")
