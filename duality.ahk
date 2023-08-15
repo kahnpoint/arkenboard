@@ -203,7 +203,7 @@ iKeyz := new iKey("z", "[", "]", "[]{Left}")
 iKeyx := new iKey("x", "{{}", "{}}", "{{}{}}{Left}")
 iKeyc := new iKey("c", "(", ")", "(){Left}")
 iKeyv := new iKey("v",  "<", ">", "<>{Left}")
-iKeyb := new iKey("b", "`|","`\", "{F12}")
+iKeyb := new iKey("b", "`|","`\"hrrhhh, "{F12}")
 
 iKeyn := new iKey("m", "{!}","`{^}", "{PrintScreen}")
 iKeym := new iKey("n", "`&", "``", "````{Left}")
