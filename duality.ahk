@@ -206,14 +206,14 @@ iKeyk := new iKey("{Enter}", "{Down}", "{PgDn}",  "<{!}--{Space}{Space}-->{Left 
 iKeyl := new iKey("l", "{Right}", "{PgUp}", "/*{Space}{Space}*/{Left 3}")   
 lKeySemicolon := new iKey("p", ";", ":", "::")
 
-iKeyz := new iKey("z", "`|","`\", "{F12}")
+iKeyz := new iKey("z", "[", "]", "[]{Left}")
 iKeyx := new iKey("x", "{{}", "{}}", "{{}{}}{Left}")
 iKeyc := new iKey("c", "(", ")", "(){Left}")
 iKeyv := new iKey("v",  "<", ">", "<>{Left}")
-iKeyb := new iKey("b", "[", "]", "[]{Left}")
+iKeyb := new iKey("b", "`|","`\", "{F12}")
 
 iKeyn := new iKey("m", "{!}","`{^}", "{PrintScreen}")
-iKeym := new iKey("s", "`&", "``", "````{Left}")
+iKeym := new iKey("r", "`&", "``", "````{Left}")
 iKeyComma := new iKey("d", ",", "`'", "`'`'{Left}")
 iKeyPeriod := new iKey("n", ".", """", """""{Left}")
 iKeySlash := new iKey("j", "`?", "{$}", "${{}{}}{Left}")
