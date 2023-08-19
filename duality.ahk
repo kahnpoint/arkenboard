@@ -133,10 +133,12 @@ class iMouseKey extends iKey {
     If (_mouseRDown) {
       _mouseRDown := False
       Send, {RButton Up}
-    } else If (_mouseMDown) {
+    }
+    If (_mouseMDown) {
       _mouseMDown := False
       Send, {MButton Up}
-    } else If (_mouseLDown) {
+    }
+    If (_mouseLDown) {
       _mouseLDown := False
       Send, {LButton Up}
     }
@@ -183,16 +185,16 @@ iSuperKey := new iSuperKey()
 
 ;["{Ctrl Down}l{Ctrl Up}cmd{Enter}", "sleep, 1200", "code . {Enter}"]
 iKeyq := new iKey("q", "`~", "0", "{F10}")
-iKeyw := new iKey("o", "`-", "1", "{F1}")
-iKeye := new iKey("i", "{+}", "2", "{F2}")
-iKeyr := new iKey("u", "`/", "3", "{F3}")
-iKeyt := new iKey("k", "{*}", "4", "{F4}")
+iKeyw := new iKey("u", "`-", "1", "{F1}")
+iKeye := new iKey("o", "{+}", "2", "{F2}")
+iKeyr := new iKey("i", "`/", "3", "{F3}")
+iKeyt := new iKey("{Esc}", "{*}", "4", "{F4}")
 
 iKeyy := new iKey("w", "%", "5", "{F5}")
 iKeyu := new iKey("s", "_", "6", "{F6}")
-iKeyi := new iKey("t", "{Up}", "7", "{F7}")
-iKeyo := new iKey("h", "`=", "8", "{F8}")
-iKeyp := new iKey("{Esc}", "{RWin Down}.{RWin Up}", "9", "{F9}")
+iKeyi := new iKey("h", "{Up}", "7", "{F7}")
+iKeyo := new iKey("t", "`=", "8", "{F8}")
+iKeyp := new iKey("k", "{RWin Down}.{RWin Up}", "9", "{F9}")
 
 iKeya := new iKey("y", "{#}", "{@}", "{F11}")
 iKeys := new iKey("a", "{Backspace}","{Backspace}",  "{Backspace}")
@@ -200,7 +202,7 @@ iKeyd := new iKey("e", "{Delete}", "{Delete}", "{Delete}")
 iKeyf := new iMouseKey("{LButton Down}",   "{RButton Down}", "{MButton Down}", "{MButton Down}")
 iKeyg := new iKey("g", ["SoundDn, -5"], ["SoundUp, +5"], ["SoundSet, 0"])
 
-iKeyh := new iKey("f", "^+;", "^``", "^``^b") 
+iKeyh := new iKey("m", "^+;", "^``", "^``^b") 
 iKeyj := new iKey(" ",  "{Left}", "{Tab}", "{Tab}")
 iKeyk := new iKey("{Enter}", "{Down}", "{PgDn}",  "<{!}--{Space}{Space}-->{Left 4}")
 iKeyl := new iKey("l", "{Right}", "{PgUp}", "/*{Space}{Space}*/{Left 3}")   
@@ -212,10 +214,10 @@ iKeyc := new iKey("c", "(", ")", "(){Left}")
 iKeyv := new iKey("v",  "<", ">", "<>{Left}")
 iKeyb := new iKey("b", "`|","`\", "{F12}")
 
-iKeyn := new iKey("m", "{!}","`{^}", "{PrintScreen}")
+iKeyn := new iKey("f", "{!}","`{^}", "{PrintScreen}")
 iKeym := new iKey("r", "`&", "``", "````{Left}")
-iKeyComma := new iKey("d", ",", "`'", "`'`'{Left}")
-iKeyPeriod := new iKey("n", ".", """", """""{Left}")
+iKeyComma := new iKey("n", ",", "`'", "`'`'{Left}")
+iKeyPeriod := new iKey("d", ".", """", """""{Left}")
 iKeySlash := new iKey("j", "`?", "{$}", "${{}{}}{Left}")
 
 ; map the modifier keys to their objects  3
