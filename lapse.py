@@ -1,3 +1,6 @@
+# This script was used to create the time-lapse video.
+# Credit goes to ChatGPT
+
 import os
 import cv2
 import time
