@@ -215,8 +215,8 @@ iKeyv := new iKey("v",  "<", ">", "<>{Left}")
 iKeyb := new iKey("b", "`|","`\", "{F12}")
 
 iKeyn := new iKey("f", "`&","`{^}", "{PrintScreen}")
-iKeym := new iKey("n", "{!}", "``", "````{Left}")
-iKeyComma := new iKey("r", ",", "`'", "`'`'{Left}")
+iKeym := new iKey("r", "{!}", "``", "````{Left}")
+iKeyComma := new iKey("n", ",", "`'", "`'`'{Left}")
 iKeyPeriod := new iKey("d", ".", """", """""{Left}")
 iKeySlash := new iKey("j", "`?", "{$}", "${{}{}}{Left}")
 
