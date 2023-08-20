@@ -184,16 +184,16 @@ iSubKey := new iSubKey()
 iSuperKey := new iSuperKey()
 
 ;["{Ctrl Down}l{Ctrl Up}cmd{Enter}", "sleep, 1200", "code . {Enter}"]
-iKeyq := new iKey("q", "`~", "0", "{F10}")
-iKeyw := new iKey("u", "`-", "1", "{F1}")
-iKeye := new iKey("o", "{+}", "2", "{F2}")
-iKeyr := new iKey("i", "`/", "3", "{F3}")
+iKeyq := new iKey("q", "`=", "0", "{F10}")
+iKeyw := new iKey("u", "_", "1", "{F1}")
+iKeye := new iKey("o", "`-", "2", "{F2}")
+iKeyr := new iKey("i", "{+}", "3", "{F3}")
 iKeyt := new iKey("w", "{*}", "4", "{F4}")
 
 iKeyy := new iKey("k", "%", "5", "{F5}")
-iKeyu := new iKey("s", "_", "6", "{F6}")
+iKeyu := new iKey("t", "`~", "6", "{F6}")
 iKeyi := new iKey("h", "{Up}", "7", "{F7}")
-iKeyo := new iKey("t", "`=", "8", "{F8}")
+iKeyo := new iKey("s", "`/", "8", "{F8}")
 iKeyp := new iKey("{Esc}", "{RWin Down}.{RWin Up}", "9", "{F9}")
 
 iKeya := new iKey("y", "{#}", "{@}", "{F11}")
@@ -214,10 +214,10 @@ iKeyc := new iKey("c", "(", ")", "(){Left}")
 iKeyv := new iKey("v",  "<", ">", "<>{Left}")
 iKeyb := new iKey("b", "`|","`\", "{F12}")
 
-iKeyn := new iKey("f", "{!}","`{^}", "{PrintScreen}")
-iKeym := new iKey("r", "`&", "``", "````{Left}")
+iKeyn := new iKey("f", "`&","`{^}", "{PrintScreen}")
+iKeym := new iKey("d", ".", "``", "````{Left}")
 iKeyComma := new iKey("n", ",", "`'", "`'`'{Left}")
-iKeyPeriod := new iKey("d", ".", """", """""{Left}")
+iKeyPeriod := new iKey("r", "{!}", """", """""{Left}")
 iKeySlash := new iKey("j", "`?", "{$}", "${{}{}}{Left}")
 
 ; map the modifier keys to their objects  3
