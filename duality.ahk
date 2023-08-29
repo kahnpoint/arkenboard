@@ -1,4 +1,4 @@
-﻿; Duality is a 5x3+2 keyboard layout
+﻿; Duality is a 5x3+3 keyboard layout
 ; - @kahnpoint (adam kahn) 2023
 
 #NoEnv
@@ -188,9 +188,9 @@ iKeyq := new iKey("q", "`=", "0", "{F10}")
 iKeyw := new iKey("u", "_", "1", "{F1}")
 iKeye := new iKey("o", "`-", "2", "{F2}")
 iKeyr := new iKey("i", "{+}", "3", "{F3}")
-iKeyt := new iKey("w", "{RWin Down}.{RWin Up}", "4", "{F4}")
+iKeyt := new iKey("k", "{RWin Down}.{RWin Up}", "4", "{F4}")
 
-iKeyy := new iKey("k", "%", "5", "{F5}")
+iKeyy := new iKey("w", "%", "5", "{F5}")
 iKeyu := new iKey("t", "`~", "6", "{F6}")
 iKeyi := new iKey("h", "{Up}", "7", "{F7}")
 iKeyo := new iKey("s", "`/", "8", "{F8}")
@@ -208,11 +208,11 @@ iKeyk := new iKey("{Enter}", "{Down}", "{PgDn}",  "<{!}--{Space}{Space}-->{Left 
 iKeyl := new iKey("l", "{Right}", "{PgUp}", "/*{Space}{Space}*/{Left 3}")   
 lKeySemicolon := new iKey("p", ";", ":", "::")
 
-iKeyz := new iKey("z", "[", "]", "[]{Left}")
+iKeyz := new iKey("z", "`|","`\", "{F12}")
 iKeyx := new iKey("x", "{{}", "{}}", "{{}{}}{Left}")
 iKeyc := new iKey("c", "(", ")", "(){Left}")
 iKeyv := new iKey("v",  "<", ">", "<>{Left}")
-iKeyb := new iKey("b", "`|","`\", "{F12}")
+iKeyb := new iKey("b", "[", "]", "[]{Left}")
 
 iKeyn := new iKey("f", "`&","`{^}", "{PrintScreen}")
 iKeym := new iKey("r", "{!}", "``", "````{Left}")
