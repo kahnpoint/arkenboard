@@ -1,16 +1,20 @@
-﻿; Duality is a 5x3+3 keyboard layout
-; - @kahnpoint (adam kahn) 2023
+; Arkenboard AHK Script
+; @kahnpoint 2023
 
 #NoEnv
 #SingleInstance, Force
 #MaxThreadsPerHotkey 1 
 #MaxHotkeysPerInterval 20000
+#Persistent
 ;SendMode, Input
 SetBatchLines, -1
 SetWorkingDir, %A_ScriptDir%
+SetTimer, WatchMouse, 1 ; Check every millisecond
+global originalX := 0
+global originalY := 0
+global originalLock := False
 
-; These global variables are used to keep track of 
-; the state of the modifier keys
+; These global variables are used to keep track of the state of the modifier keys
 global _subDown := False
 global _subFirstDown := False
 global _superDown := False
@@ -220,11 +224,12 @@ iKeyComma := new iKey("n", ",", "`'", "`'`'{Left}")
 iKeyPeriod := new iKey("d", ".^{Space}", """", """""{Left}")
 iKeySlash := new iKey("j", "`?", "{$}", "${{}{}}{Left}")
 
-; map the modifier keys to their objects  3
+; map the modifier keys to their objects
 *LAlt::iSubKey.press()
 *LAlt Up::iSubKey.release()
 *Space::iSuperKey.press()
 *Space Up::iSuperKey.release()
+
 
 ; map the keys to their objects
 *q::iKeyq.press()
@@ -259,7 +264,60 @@ iKeySlash := new iKey("j", "`?", "{$}", "${{}{}}{Left}")
 */::iKeySlash.press()
 *`;::lKeySemicolon.press()
 
+
 ; alt tab abilities
 RAlt & j::AltTabMenu
 RAlt & l::AltTab
 RAlt & k::ShiftAltTab
+
+
+; allow the mouse to function as a scroll wheel
+WatchMouse:
+;KeyIsDown := GetKeyState("LShift", "P") ; Check if LShift is pressed
+global _subDown
+global _superDown
+if (_subDown or _superDown) {
+    
+    if (originalX = 0 and originalY = 0 and originalLock = False) {
+        MouseGetPos, originalX, originalY ; Capture the original position when LShift is first pressed
+        originalLock := True
+    }
+
+    MouseGetPos, x2, y2 ; Get current mouse position
+    
+    ; Calculate the distance moved
+    dx := x2 - originalX
+    dy := y2 - originalY
+
+    ; Scroll vertically with the sub key
+    if (_subDown) {
+        ; Proportionally send scroll based on Y-axis movement
+        WheelDelta := dy / 30 ; Adjust the divisor for desired sensitivity
+        Loop, % Round(Abs(WheelDelta)) {
+            if (WheelDelta > 0)
+                Send {WheelDown}
+            else
+                Send {WheelUp}
+        }
+    }
+    
+    ; Scroll horizontally with the super key
+    if (_superDown) {
+        ; Proportionally send scroll based on X-axis movement
+        WheelDeltaX := dx / 30 ; Adjust the divisor for desired sensitivity
+        Loop, % Round(Abs(WheelDeltaX)) {
+            if (WheelDeltaX > 0)
+                Send +{WheelDown}
+            else
+                Send +{WheelUp}
+        }
+    }
+    
+    ; Lock the mouse to the original position
+    MouseMove, originalX, originalY, 0 ; Reset mouse position to original position without animation
+} else {
+    originalX := 0 ; Reset the original X and Y coordinates when LShift is released
+    originalY := 0
+    originalLock := False
+}
+return
