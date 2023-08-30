@@ -292,7 +292,7 @@ if (_subDown or _superDown) {
     ; Scroll vertically with the sub key
     if (_subDown) {
         ; Proportionally send scroll based on Y-axis movement
-        WheelDelta := dy / 30 ; Adjust the divisor for desired sensitivity
+        WheelDelta := dy / 10 ; Adjust the divisor for desired sensitivity
         Loop, % Round(Abs(WheelDelta)) {
             if (WheelDelta > 0)
                 Send {WheelDown}
@@ -304,7 +304,7 @@ if (_subDown or _superDown) {
     ; Scroll horizontally with the super key
     if (_superDown) {
         ; Proportionally send scroll based on X-axis movement
-        WheelDeltaX := dx / 30 ; Adjust the divisor for desired sensitivity
+        WheelDeltaX := dx / 10 ; Adjust the divisor for desired sensitivity
         Loop, % Round(Abs(WheelDeltaX)) {
             if (WheelDeltaX > 0)
                 Send +{WheelDown}
