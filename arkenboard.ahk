@@ -9,7 +9,7 @@
 ;SendMode, Input
 SetBatchLines, -1
 SetWorkingDir, %A_ScriptDir%
-SetTimer, WatchMouse, 1 ; Check every millisecond
+SetTimer, WatchMouse, 5 ; Check every 5 milliseconds
 global originalX := 0
 global originalY := 0
 global originalLock := False
