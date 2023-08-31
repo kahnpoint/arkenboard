@@ -273,10 +273,9 @@ RAlt & k::ShiftAltTab
 
 ; allow the mouse to function as a scroll wheel
 WatchMouse:
-;KeyIsDown := GetKeyState("LShift", "P") ; Check if LShift is pressed
 global _subDown
 global _superDown
-if (_subDown or _superDown) {
+if (_subDown) {
     
     if (originalX = 0 and originalY = 0 and originalLock = False) {
         MouseGetPos, originalX, originalY ; Capture the original position when LShift is first pressed
@@ -288,9 +287,11 @@ if (_subDown or _superDown) {
     ; Calculate the distance moved
     dx := x2 - originalX
     dy := y2 - originalY
+    
+    ShiftDown := GetKeyState("LShift", "P") ; Check if LShift is pressed
 
     ; Scroll vertically with the sub key
-    if (_subDown) {
+    if (_subDown and not ShiftDown) {
         ; Proportionally send scroll based on Y-axis movement
         WheelDelta := dy / 10 ; Adjust the divisor for desired sensitivity
         Loop, % Round(Abs(WheelDelta)) {
@@ -302,7 +303,7 @@ if (_subDown or _superDown) {
     }
     
     ; Scroll horizontally with the super key
-    if (_superDown) {
+    if (_subDown and ShiftDown) {
         ; Proportionally send scroll based on X-axis movement
         WheelDeltaX := dx / 10 ; Adjust the divisor for desired sensitivity
         Loop, % Round(Abs(WheelDeltaX)) {
