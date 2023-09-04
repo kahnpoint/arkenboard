@@ -24,6 +24,11 @@ global _mouseMDown := False
 global _mouseRDown := False
 global _mouseLDown := False
 
+; Initialize the tap count and the timer
+global escTapCount := 0
+global escTapTimer := 0
+global enableFunctionLayer := True
+
 ; iKey is the base class for the standard keys
 class iKey {
 
@@ -224,6 +229,9 @@ iKeyComma := new iKey("n", ",", "`'", "`'`'{Left}")
 iKeyPeriod := new iKey("d", ".^{Space}", """", """""{Left}")
 iKeySlash := new iKey("j", "`?", "{$}", "${{}{}}{Left}")
 
+
+#IF enableFunctionLayer
+
 ; map the modifier keys to their objects
 *LAlt::iSubKey.press()
 *LAlt Up::iSubKey.release()
@@ -321,4 +329,40 @@ if (_subDown) {
     originalY := 0
     originalLock := False
 }
+return
+
+#IF
+
+; The main Esc key detection hotkey
+Esc::
+    ; Increment the tap count
+    escTapCount++
+    
+    ; If this is the first tap, start the timer
+    if (escTapCount = 1) {
+        ; Start a timer that will reset escTapCount after 500 milliseconds
+        ; Change 500 to any amount of time (in milliseconds) that works for you
+        SetTimer, ResetEscTapCount, -500
+    }
+    
+    ; Check if the Esc key has been tapped 3 times
+    if (escTapCount = 3) {
+        ; Reset the tap count
+        escTapCount := 0
+        
+        ; Enable or disable the function layer
+        enableFunctionLayer := not enableFunctionLayer
+        
+
+        ; Reset the timer
+        escTapTimer := 0
+        ;MsgBox, Function Layer %enableFunctionLayer%
+    }
+    
+return
+
+; The timer label that resets the tap count
+ResetEscTapCount:
+    escTapCount := 0
+    escTapTimer := 0
 return
