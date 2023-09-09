@@ -77,11 +77,11 @@
       "S(KC_LBRC)",
       "S(KC_9)",
       "S(KC_COMM)",
-      "KC_LBRC",
+      "KC_LBRC", 
       "KC_TRNS",
       "KC_TRNS",
       "KC_TRNS",
-      "MO(1)",
+      "KC_TRNS",
       "KC_TRNS",
       "KC_BSLS",
       "KC_SLSH",
@@ -101,7 +101,7 @@
       "KC_PGUP",
       "KC_TRNS",
       "KC_PGDN",
-      "MO(3)",
+      "KC_TRNS",
       "KC_TRNS"
     ],
     [
@@ -123,7 +123,7 @@
       "KC_TRNS",
       "KC_ENT",
       "KC_CAPS",
-      "MO(3)",
+      "KC_TRNS",
       "KC_TRNS",
       "KC_9",
       "KC_8",
@@ -143,7 +143,7 @@
       "KC_TRNS",
       "KC_TRNS",
       "KC_TRNS",
-      "MO(2)",
+      "KC_TRNS",
       "KC_TRNS"
     ],
     [
@@ -165,7 +165,7 @@
       "KC_TRNS",
       "KC_MSTP",
       "KC_TRNS",
-      "MO(3)",
+      "KC_TRNS",
       "KC_TRNS",
       "KC_F9",
       "KC_F8",
@@ -185,7 +185,7 @@
       "KC_TRNS",
       "KC_TRNS",
       "KC_TRNS",
-      "MO(3)",
+      "KC_TRNS",
       "KC_TRNS"
     ],
     [
