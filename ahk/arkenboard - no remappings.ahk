@@ -29,11 +29,6 @@ global escTapCount := 0
 global escTapTimer := 0
 global enableFunctionLayer := True 
 
-
-
-
-
-
 ; iKey is the base class for the standard keys
 class iKey {
 
@@ -236,8 +231,8 @@ iKeySlash := new iKey("j", "`?", "{$}", "${{}{}}{Left}")
 
 
 ; map the modifier keys to their objects
-*LCtrl::iSubKey.press()
-*LCtrl Up::iSubKey.release()
+~*LCtrl::iSubKey.press()
+~*LCtrl Up::iSubKey.release()
 ;*Space::iSuperKey.press()
 ;*Space Up::iSuperKey.release()
 
