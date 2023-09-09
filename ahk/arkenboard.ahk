@@ -1,4 +1,4 @@
-; Arkenboard AHK Script
+ ; Arkenboard AHK Script
 ; @kahnpoint 2023
 
 #NoEnv
@@ -108,11 +108,10 @@ class iMouseKey extends iKey {
         result := this.supersub
         _mouseMDown := True
       } else If (_subDown) {
-        result := this.sub
-        _mouseRDown := True
+        result := this.sub 
       } else If (_superDown) {
         result := this.super
-        _mouseMDown := True
+        _mouseRDown := True
       } else {
         result := this.default
         _mouseLDown := True
@@ -132,8 +131,24 @@ class iMouseKey extends iKey {
           result := "^" . result
         }
         Send, % result
-      } 
         _mouseDown := True
+      } else If (_subDown) {
+        result := this.sub 
+        if (GetKeyState("RAlt")){
+          result := "!" . result
+        }
+        if (GetKeyState("RWin") or GetKeyState("LWin")){
+          result := "#" . result
+        }
+        
+        if (GetKeyState("Shift")){
+          result := "+" . result
+        }
+        if (GetKeyState("Ctrl")){
+          result := "^" . result
+        }
+        Send, % result
+      } 
     }
     
     release(){   
@@ -193,37 +208,37 @@ iSubKey := new iSubKey()
 iSuperKey := new iSuperKey()
 
 ;["{Ctrl Down}l{Ctrl Up}cmd{Enter}", "sleep, 1200", "code . {Enter}"]
-iKeyq := new iKey("q", "`=", "0", "{F10}")
+iKeyq := new iKey("q", "`|", "0", "{F10}")
 iKeyw := new iKey("u", "_", "1", "{F1}")
-iKeye := new iKey("o", "`-", "2", "{F2}")
-iKeyr := new iKey("i", "{+}", "3", "{F3}")
-iKeyt := new iKey("k", "{RWin Down}.{RWin Up}", "4", "{F4}")
+iKeye := new iKey("i", "`-", "2", "{F2}")
+iKeyr := new iKey("o", "{+}", "3", "{F3}")
+iKeyt := new iKey("k", "{RWin Down}.{RWin Up}", "4", "{F4}")  ; m0
 
 iKeyy := new iKey("w", "%", "5", "{F5}")
 iKeyu := new iKey("t", "`~", "6", "{F6}")
 iKeyi := new iKey("h", "{Up}", "7", "{F7}")
 iKeyo := new iKey("s", "`/", "8", "{F8}")
-iKeyp := new iKey("{Esc}", "{*}", "9", "{F9}")
+iKeyp := new iKey("{Esc}", "`\", "9", "{F9}")
 
 iKeya := new iKey("y", "{#}", "{@}", "{F11}")
 iKeys := new iKey("a", "{Backspace}","{Backspace}",  "{Backspace}")
 iKeyd := new iKey("e", "{Delete}", "{Delete}", "{Delete}") 
-iKeyf := new iMouseKey("{LButton Down}",   "{RButton Down}", "{MButton Down}", "{MButton Down}")
+iKeyf := new iKey(" ",  "{Tab}", "{Tab}", "{Tab}")
 iKeyg := new iKey("g", ["SoundDn, -5"], ["SoundUp, +5"], ["SoundSet, 0"])
 
-iKeyh := new iKey("m", "^+;", "^``", "^``^b") 
-iKeyj := new iKey(" ",  "{Left}", "{Tab}", "{Tab}")
+iKeyh := new iKey("f", "^+;", "^``", "^``^b") ; m1 2
+iKeyj := new iMouseKey("{LButton Down}",   "{Left}", "{RButton Down}", "{MButton Down}")
 iKeyk := new iKey("{Enter}", "{Down}", "{PgDn}",  "<{!}--{Space}{Space}-->{Left 4}")
 iKeyl := new iKey("l", "{Right}", "{PgUp}", "/*{Space}{Space}*/{Left 3}")   
 lKeySemicolon := new iKey("p", ";", ":", "::")
 
-iKeyz := new iKey("z", "`|","`\", "{F12}")
+iKeyz := new iKey("z", "`=","{*}", "{F12}")
 iKeyx := new iKey("x", "{{}", "{}}", "{{}{}}{Left}")
 iKeyc := new iKey("c", "(", ")", "(){Left}")
 iKeyv := new iKey("v",  "<", ">", "<>{Left}")
-iKeyb := new iKey("b", "[", "]", "[]{Left}")
+iKeyb := new iKey("b", "[", "]", "[]{Left}") 
 
-iKeyn := new iKey("f", "`&","`{^}", "{PrintScreen}")
+iKeyn := new iKey("m", "`&","`{^}", "{PrintScreen}")
 iKeym := new iKey("r", "{!}", "``", "````{Left}")
 iKeyComma := new iKey("n", ",", "`'", "`'`'{Left}")
 iKeyPeriod := new iKey("d", ".^{Space}", """", """""{Left}")
@@ -254,7 +269,7 @@ iKeySlash := new iKey("j", "`?", "{$}", "${{}{}}{Left}")
 *s::iKeys.press()
 *d::iKeyd.press()
 *f::iKeyf.press()
-*f Up::iKeyf.release()
+*j Up::iKeyj.release()
 *g::iKeyg.press()
 *h::iKeyh.press()
 *j::iKeyj.press()
@@ -283,7 +298,7 @@ RAlt & k::ShiftAltTab
 WatchMouse:
 global _subDown
 global _superDown
-if (_subDown) {
+if (_subDown or _superDown) {
     
     if (originalX = 0 and originalY = 0 and originalLock = False) {
         MouseGetPos, originalX, originalY ; Capture the original position when LShift is first pressed
@@ -299,7 +314,7 @@ if (_subDown) {
     ShiftDown := GetKeyState("LShift", "P") ; Check if LShift is pressed
 
     ; Scroll vertically with the sub key
-    if (_subDown and not ShiftDown) {
+    if ((_subDown or _superDown) and not ShiftDown) {
         ; Proportionally send scroll based on Y-axis movement
         WheelDelta := dy / 10 ; Adjust the divisor for desired sensitivity
         Loop, % Round(Abs(WheelDelta)) {
@@ -311,7 +326,7 @@ if (_subDown) {
     }
     
     ; Scroll horizontally with the super key
-    if (_subDown and ShiftDown) {
+    if ((_subDown or _superDown) and ShiftDown) {
         ; Proportionally send scroll based on X-axis movement
         WheelDeltaX := dx / 10 ; Adjust the divisor for desired sensitivity
         Loop, % Round(Abs(WheelDeltaX)) {
