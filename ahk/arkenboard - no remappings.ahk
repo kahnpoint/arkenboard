@@ -24,6 +24,16 @@ global _mouseMDown := False
 global _mouseRDown := False
 global _mouseLDown := False
 
+; Initialize the tap count and the timer
+global escTapCount := 0
+global escTapTimer := 0
+global enableFunctionLayer := True 
+
+
+
+
+
+
 ; iKey is the base class for the standard keys
 class iKey {
 
@@ -224,51 +234,17 @@ iKeyComma := new iKey("n", ",", "`'", "`'`'{Left}")
 iKeyPeriod := new iKey("d", ".^{Space}", """", """""{Left}")
 iKeySlash := new iKey("j", "`?", "{$}", "${{}{}}{Left}")
 
+
 ; map the modifier keys to their objects
-*LAlt::iSubKey.press()
-*LAlt Up::iSubKey.release()
-*Space::iSuperKey.press()
-*Space Up::iSuperKey.release()
-
-
-; map the keys to their objects
-*q::iKeyq.press()
-*w::iKeyw.press()
-*e::iKeye.press()
-*r::iKeyr.press()
-*t::iKeyt.press()
-*y::iKeyy.press()
-*u::iKeyu.press()
-*i::iKeyi.press()
-*o::iKeyo.press()
-*p::iKeyp.press()
-*a::iKeya.press()
-*s::iKeys.press()
-*d::iKeyd.press()
-*f::iKeyf.press()
-*f Up::iKeyf.release()
-*g::iKeyg.press()
-*h::iKeyh.press()
-*j::iKeyj.press()
-*k::iKeyk.press()
-*l::iKeyl.press()
-*z::iKeyz.press()
-*x::iKeyx.press()
-*c::iKeyc.press()
-*v::iKeyv.press()
-*b::iKeyb.press()
-*n::iKeyn.press()
-*m::iKeym.press()
-*,::iKeyComma.press()
-*.::iKeyPeriod.press()
-*/::iKeySlash.press()
-*`;::lKeySemicolon.press()
-
+*LCtrl::iSubKey.press()
+*LCtrl Up::iSubKey.release()
+;*Space::iSuperKey.press()
+;*Space Up::iSuperKey.release()
 
 ; alt tab abilities
-RAlt & j::AltTabMenu
-RAlt & l::AltTab
-RAlt & k::ShiftAltTab
+LAlt & r::AltTabMenu
+LAlt & d::AltTab
+LAlt & n::ShiftAltTab
 
 
 ; allow the mouse to function as a scroll wheel
@@ -276,7 +252,7 @@ WatchMouse:
 global _subDown
 global _superDown
 if (_subDown) {
-    
+  
     if (originalX = 0 and originalY = 0 and originalLock = False) {
         MouseGetPos, originalX, originalY ; Capture the original position when LShift is first pressed
         originalLock := True
@@ -291,9 +267,9 @@ if (_subDown) {
     ShiftDown := GetKeyState("LShift", "P") ; Check if LShift is pressed
 
     ; Scroll vertically with the sub key
-    if (_subDown and not ShiftDown) {
+    if (not ShiftDown) {
         ; Proportionally send scroll based on Y-axis movement
-        WheelDelta := dy / 10 ; Adjust the divisor for desired sensitivity
+        WheelDelta := dy / 20 ; Adjust the divisor for desired sensitivity
         Loop, % Round(Abs(WheelDelta)) {
             if (WheelDelta > 0)
                 Send {WheelDown}
@@ -303,7 +279,7 @@ if (_subDown) {
     }
     
     ; Scroll horizontally with the super key
-    if (_subDown and ShiftDown) {
+    if (ShiftDown) {
         ; Proportionally send scroll based on X-axis movement
         WheelDeltaX := dx / 10 ; Adjust the divisor for desired sensitivity
         Loop, % Round(Abs(WheelDeltaX)) {
