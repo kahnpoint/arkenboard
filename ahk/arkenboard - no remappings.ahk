@@ -230,17 +230,18 @@ iKeyPeriod := new iKey("d", ".^{Space}", """", """""{Left}")
 iKeySlash := new iKey("j", "`?", "{$}", "${{}{}}{Left}")
 
 
+
 ; map the modifier keys to their objects
-~*LCtrl::iSubKey.press()
-~*LCtrl Up::iSubKey.release()
+;~*LAlt::iSubKey.press()
+;~*LAlt Up::iSubKey.release()
 ;*Space::iSuperKey.press()
 ;*Space Up::iSuperKey.release()
 
 ; alt tab abilities
 LAlt & r::AltTabMenu
 LAlt & d::AltTab
-LAlt & n::ShiftAltTab
 
+LAlt & n::ShiftAltTab
 
 ; allow the mouse to function as a scroll wheel
 WatchMouse:
@@ -265,16 +266,16 @@ if (_subDown) {
     if (not ShiftDown) {
         ; Proportionally send scroll based on Y-axis movement
         WheelDelta := dy / 20 ; Adjust the divisor for desired sensitivity
+        if (WheelDelta > 0)
         Loop, % Round(Abs(WheelDelta)) {
-            if (WheelDelta > 0)
                 Send {WheelDown}
-            else
+         } else {
                 Send {WheelUp}
         }
     }
     
-    ; Scroll horizontally with the super key
     if (ShiftDown) {
+    ; Scroll horizontally with the super key
         ; Proportionally send scroll based on X-axis movement
         WheelDeltaX := dx / 10 ; Adjust the divisor for desired sensitivity
         Loop, % Round(Abs(WheelDeltaX)) {
