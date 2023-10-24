@@ -1,13 +1,13 @@
 # Arkenboard
-Arkenboard is my LOTR-inspired keyboard build.
 
-It uses a qwerty layout on the actual hardware, but uses AutoHotkey to remap the keys to a custom layout (quoi) and add function layers.
-This way, the hotkey layer can be disabled to use it for qwerty-based applications, like gaming.
+![Arkenboard Dwarvish Text](https://github.com/kahnpoint/arkenboard/blob/4d60b2af476b2042216d77422569663eb61ac84a/images/arkenboard-text.png)
 
-It treats the two halves as seperate keyboards to support using the roller balls as 2 mice (and scroll wheels). Why 2 mice? Simple: 2 hands.
+Arkenboard is my LOTR-inspired keyboard build, and is a modified version of a [Charybdis Nano](https://bastardkb.com/charybdis/).
 
-TODO
-- Keymap Graphic
-- Toggle AHK with keypress
-- Chording?
-- Look into horizontal scroll lag
+![Arkenboard Top-Down Photo](https://github.com/kahnpoint/arkenboard/blob/4d60b2af476b2042216d77422569663eb61ac84a/images/board-top-down.png)
+
+The dual trackballs function as two mice. Why two? Simple: Two hands.
+
+![Arkenboard Top-Down Photo](https://github.com/kahnpoint/arkenboard/blob/4d60b2af476b2042216d77422569663eb61ac84a/images/board-side-profile.png)
+
+This is a very rough prototype and V2 will have a lot of changes.
