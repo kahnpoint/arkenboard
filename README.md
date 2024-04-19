@@ -10,4 +10,4 @@ The dual trackballs function as two mice. Why two? Simple: Two hands.
 
 ![Arkenboard Top-Down Photo](https://github.com/kahnpoint/arkenboard/blob/main/images/board-side-profile.jpg)
 
-This is a very rough prototype and V2 will have a lot of changes.
+Development moved [here](https://github.com/kahnpoint/bastardkb-qmk-kahnpoint).
